@@ -4,7 +4,7 @@
 #* the header file
 
 
-sbt mkrun
+# sbt mkrun
 
 #create a directory gitbusybox and download busybox sources there
 
@@ -24,7 +24,7 @@ cd ..
 ./run.sh de.fosd.typechef.busybox.KConfigReader gitbusybox/ gitbusybox/featureModel gitbusybox/header.h gitbusybox/features
 
 #use the standard blacklist
-#ln -s linkerblacklist gitbusybox/linkerblacklist
+ln -s linkerblacklist gitbusybox/linkerblacklist;
 
 #copy an old file pc in case KBuildMiner is not installed
 #cp KBuildMiner/pc.txt gitbusybox/pc.txt
@@ -34,6 +34,7 @@ cd ..
 cd KBuildMiner
 mvn scala:run -q -DmainClass=gsd.buildanalysis.linux.KBuildMinerMain
 cd ..
+cp KBuildMiner/pc.txt gitbusybox/pc.txt
 grep -v libunarchive gitbusybox/pc.txt | grep -v Unknown > gitbusybox/pc_clean.txt
 
 # extract a list of all relevant files
